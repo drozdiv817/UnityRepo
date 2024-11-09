@@ -17,28 +17,19 @@ public class NoiseTest : MonoBehaviour
 
     private void TerrainGenerate()
     {
-
-        var terrain = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        terrain.transform.localScale = new Vector3(1, Perlin() * 10, 1);
-
-        if (iterationX < 75)
+        while (iterationZ < 25)
         {
+            while (iterationX < 25)
+            {
+                var terrain = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                terrain.transform.localScale = new Vector3(1, Perlin() * 10, 1);
 
-            terrain.transform.position = new Vector3(iterationX, 0, iterationZ);
-            iterationX = iterationX + 1;
-        }
-        if (iterationX >= 75)
-        {
-
+                terrain.transform.position = new Vector3(iterationX, 0, iterationZ);
+                
+                iterationX = iterationX + 1;
+            }
             iterationX = 0;
             iterationZ = iterationZ + 1;
-
-            terrain.transform.position = new Vector3(iterationX, 0, iterationZ);
-            iterationX = iterationX + 1;
-        }
-        if (iterationZ >= 10)
-        {
-            return;
         }
     }
 
